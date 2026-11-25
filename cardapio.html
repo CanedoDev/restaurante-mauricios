@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio · Restaurante Mauricio’s de Itaipava</title>
+  <meta name="description" content="Cardápio ilustrativo e montagem de pedido do Restaurante Mauricio’s em Itaipava para envio manual ao WhatsApp (24) 99306-1488.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/cardapio.css">
+</head>
+<body class="menu-body">
+  <a class="skip-link" href="#catalogo-principal">Ir para o cardápio</a>
+
+  <header class="menu-header surface-dark">
+    <div class="container menu-header-inner">
+      <a class="brand-lockup" href="./index.html" aria-label="Restaurante Mauricio’s, voltar para a página inicial">
+        <span class="monogram-mark" aria-hidden="true">M</span>
+        <span class="brand-name">Mauricio’s</span>
+      </a>
+
+      <a class="menu-back-link" href="./index.html">Voltar à casa</a>
+    </div>
+  </header>
+
+  <main class="container menu-workspace" id="catalogo-principal">
+    <div class="catalog-column">
+      <section class="catalog-intro" aria-label="Cabeçalho do cardápio">
+        <div>
+          <span class="eyebrow">Restaurante em Itaipava</span>
+          <h1 class="display-heading catalog-title">Cardápio da casa</h1>
+          <div class="catalog-subtitle-row">
+            <span>Seleção de pratos · prévia de pedido</span>
+            <span class="illustrative-badge">Preços ilustrativos</span>
+          </div>
+        </div>
+
+        <div class="search-box" role="search">
+          <label class="sr-only" for="menu-search">Buscar prato ou ingrediente</label>
+          <input
+            class="search-input"
+            id="menu-search"
+            type="search"
+            placeholder="Buscar prato ou ingrediente"
+            autocomplete="off"
+          >
+          <button class="search-clear" id="search-clear" type="button" hidden>Limpar</button>
+        </div>
+      </section>
+
+      <div class="cat-bar-wrap">
+        <nav class="cat-bar" id="cat-bar" aria-label="Categorias do cardápio">
+          <a class="cat-pill is-active" href="#mais-pedidos" data-cat="mais-pedidos">Mais pedidos</a>
+          <a class="cat-pill" href="#frutos-do-mar" data-cat="frutos-do-mar">Frutos do Mar</a>
+          <a class="cat-pill" href="#chapas-e-carnes" data-cat="chapas-e-carnes">Chapas &amp; Carnes</a>
+          <a class="cat-pill" href="#entradas-e-petiscos" data-cat="entradas-e-petiscos">Entradas &amp; Petiscos</a>
+          <a class="cat-pill" href="#executivo" data-cat="executivo">Executivo</a>
+          <a class="cat-pill" href="#sobremesas" data-cat="sobremesas">Sobremesas</a>
+          <a class="cat-pill" href="#batidas-e-bebidas" data-cat="batidas-e-bebidas">Batidas &amp; Bebidas</a>
+        </nav>
+      </div>
+
+      <div class="search-status-bar" id="search-status-bar" aria-live="polite" hidden>
+        <p class="search-status-title">Resultado da busca</p>
+        <p class="search-status-count" id="search-status-count"></p>
+      </div>
+
+      <div class="empty-search" id="empty-search" hidden>
+        <h2>Nenhum prato encontrado</h2>
+        <p>Tente outro prato ou ingrediente.</p>
+        <button class="pill pill--dark" id="empty-search-clear" type="button">Limpar busca</button>
+      </div>
+
+      <div id="catalog-sections"></div>
+    </div>
+
+    <div class="cart-backdrop" id="cart-backdrop" hidden></div>
+
+    <aside class="cart-panel" id="cart-panel" aria-label="Seu pedido" aria-live="polite">
+      <div class="cart-head">
+        <div>
+          <span class="eyebrow">Cardápio do Mauricio’s</span>
+          <h2 class="cart-title">Seu pedido</h2>
+        </div>
+        <button class="cart-drawer-close" id="cart-drawer-close" type="button">Fechar</button>
+      </div>
+
+      <div class="cart-empty" id="cart-empty">
+        <p class="cart-empty-title">Sua mesa está aberta.</p>
+        <p class="cart-empty-desc">Escolha um prato no cardápio para começar.</p>
+      </div>
+
+      <div class="cart-items" id="cart-items"></div>
+
+      <div>
+        <div class="fulfillment-switch" role="group" aria-label="Modalidade do pedido">
+          <button class="fulfillment-btn" id="mode-retirada" type="button" aria-pressed="true">Retirada</button>
+          <button class="fulfillment-btn" id="mode-entrega" type="button" aria-pressed="false">Entrega</button>
+        </div>
+        <p class="fulfillment-info" id="fulfillment-info" style="margin-top: 10px;">
+          Retirada no Shopping Altair, andar G.
+        </p>
+      </div>
+
+      <div class="delivery-address-wrap" id="delivery-address-wrap" hidden>
+        <label class="field-label" for="delivery-address">Endereço para entrega em Itaipava / região</label>
+        <input
+          class="text-field"
+          id="delivery-address"
+          type="text"
+          placeholder="Rua, número, complemento e referência"
+        >
+      </div>
+
+      <div class="cart-summary-row">
+        <span class="cart-subtotal-label">Subtotal</span>
+        <strong class="cart-subtotal-value" id="cart-subtotal">R$&nbsp;0,00</strong>
+      </div>
+
+      <button class="pill pill--dark cart-review-btn" id="open-review-btn" type="button" disabled>
+        Revisar pedido
+      </button>
+
+      <p class="cart-disclaimer">Valores ilustrativos. A casa confirma o pedido.</p>
+    </aside>
+  </main>
+
+  <div class="mobile-cart-bar" id="mobile-cart-bar">
+    <div>
+      <span class="mobile-bar-label">Subtotal (<span id="mobile-cart-count">0</span>)</span>
+      <strong class="mobile-bar-total" id="mobile-cart-total">R$&nbsp;0,00</strong>
+    </div>
+    <button class="pill pill--cream pill--compact" id="open-drawer-btn" type="button">
+      Ver carrinho
+    </button>
+  </div>
+
+  <!-- Modal de detalhe do prato -->
+  <div
+    class="modal-overlay"
+    id="item-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-dish-title"
+    hidden
+  >
+    <div class="modal-dialog" id="item-modal-dialog">
+      <button class="modal-close-btn" id="item-modal-close" type="button" aria-label="Fechar detalhes do prato">Fechar</button>
+      <div class="modal-photo">
+        <img id="modal-dish-img" src="./assets/chiclete-camarao.jpg" alt="" width="1250" height="562">
+      </div>
+      <div class="modal-body">
+        <span class="eyebrow">Cardápio da casa</span>
+        <h2 class="modal-title" id="modal-dish-title">Prato</h2>
+        <p class="modal-desc" id="modal-dish-desc"></p>
+
+        <div class="modal-price-row">
+          <span class="modal-price" id="modal-dish-price">R$ 0,00 / unidade</span>
+          <span class="modal-price-note">Preço ilustrativo</span>
+        </div>
+
+        <div>
+          <label class="field-label" for="modal-dish-note">Observação opcional</label>
+          <input
+            class="text-field"
+            id="modal-dish-note"
+            type="text"
+            placeholder="Talheres à parte"
+            maxlength="140"
+            style="margin-top: 6px;"
+          >
+        </div>
+
+        <div class="modal-footer-actions">
+          <div class="qty-stepper" aria-label="Quantidade">
+            <button class="qty-btn" id="modal-qty-minus" type="button" aria-label="Diminuir quantidade">−</button>
+            <span class="qty-value" id="modal-qty-value">1</span>
+            <button class="qty-btn" id="modal-qty-plus" type="button" aria-label="Aumentar quantidade">+</button>
+          </div>
+          <button class="pill pill--dark" id="modal-add-btn" type="button">
+            Adicionar ao pedido
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de revisao do pedido -->
+  <div
+    class="modal-overlay"
+    id="review-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="review-modal-title"
+    hidden
+  >
+    <div class="modal-dialog" id="review-modal-dialog">
+      <button class="modal-close-btn" id="review-modal-close" type="button" aria-label="Fechar revisão do pedido">Fechar</button>
+      <div class="modal-body">
+        <span class="eyebrow">Cardápio da casa</span>
+        <h2 class="modal-title" id="review-modal-title">Revisar pedido</h2>
+        <p class="modal-desc">Confira os itens antes de abrir o WhatsApp.</p>
+
+        <div class="review-list" id="review-items-list"></div>
+
+        <div class="review-mode-box">
+          <span class="eyebrow" style="margin-bottom: 4px;">Modalidade</span>
+          <p id="review-mode-summary"></p>
+        </div>
+
+        <div class="modal-price-row">
+          <span class="modal-price-note">Subtotal ilustrativo</span>
+          <strong class="modal-price" id="review-subtotal">R$ 0,00</strong>
+        </div>
+
+        <div>
+          <span class="eyebrow" style="margin-bottom: 6px;">Prévia da mensagem</span>
+          <pre class="review-preview-text" id="review-preview-text"></pre>
+        </div>
+
+        <a
+          class="pill pill--dark"
+          id="review-whatsapp-link"
+          href="https://wa.me/5524993061488"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Abrir WhatsApp
+        </a>
+        <p class="cart-disclaimer">Ação manual com valores ilustrativos. A confirmação ocorre no WhatsApp da casa.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="./js/cardapio.js" defer></script>
+</body>
+</html>

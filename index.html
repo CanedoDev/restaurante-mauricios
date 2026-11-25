@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mauricio’s de Itaipava · Frutos do mar e tradição na serra</title>
+  <meta name="description" content="Restaurante Mauricio’s em Itaipava, Petrópolis. Mais de 60 anos de tradição em frutos do mar, chapas quentes, varanda e lareira no Shopping Altair.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo-principal">Ir para o conteúdo principal</a>
+
+  <!-- 1. Header fixo transparente -> scrolled -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand-lockup" href="#topo" aria-label="Mauricio’s de Itaipava, ir para o topo">
+        <span class="monogram-mark" aria-hidden="true">M</span>
+        <span class="brand-name">Mauricio’s</span>
+      </a>
+
+      <nav class="header-nav" aria-label="Navegação principal">
+        <a href="#a-casa">A casa</a>
+        <a href="#especialidades">Especialidades</a>
+        <a href="#experiencia">Experiência</a>
+        <a href="#avaliacoes">Avaliações</a>
+        <a href="#visite-nos">Visite-nos</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="pill pill--compact header-cta" href="./cardapio.html">
+          <span class="btn-text-wrap">
+            <span class="btn-text">Ver cardápio</span>
+            <span class="btn-text-hover" aria-hidden="true">Ver cardápio</span>
+          </span>
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Abrir menu de navegação"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          id="menu-toggle"
+        >
+          <span class="menu-toggle-bar" aria-hidden="true"></span>
+          <span class="menu-toggle-bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu Mobile Fullscreen -->
+  <div
+    class="mobile-menu surface-dark"
+    id="mobile-menu"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menu de navegação"
+    aria-hidden="true"
+  >
+    <div class="mobile-menu-top">
+      <span class="monogram-mark" aria-hidden="true">M</span>
+      <button class="mobile-menu-close" type="button" id="mobile-menu-close">Fechar</button>
+    </div>
+
+    <nav class="mobile-menu-links" aria-label="Seções da página">
+      <a href="#a-casa"><span class="menu-line">A casa</span></a>
+      <a href="#especialidades"><span class="menu-line">Especialidades</span></a>
+      <a href="#experiencia"><span class="menu-line">Experiência</span></a>
+      <a href="#avaliacoes"><span class="menu-line">Avaliações</span></a>
+      <a href="#visite-nos"><span class="menu-line">Visite-nos</span></a>
+    </nav>
+
+    <div class="mobile-menu-footer">
+      <a class="pill pill--cream" href="./cardapio.html">
+        <span class="btn-text-wrap">
+          <span class="btn-text">Ver cardápio</span>
+          <span class="btn-text-hover" aria-hidden="true">Ver cardápio</span>
+        </span>
+      </a>
+      <a
+        class="pill pill--outline-light"
+        href="https://wa.me/5524993061488?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20reserva%20no%20Restaurante%20Mauricio%E2%80%99s."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="btn-text-wrap">
+          <span class="btn-text">Reservar pelo WhatsApp</span>
+          <span class="btn-text-hover" aria-hidden="true">Reservar pelo WhatsApp</span>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <main id="conteudo-principal">
+    <!-- 2. Hero + Manifesto com Colagem de 7 fotos -->
+    <section class="section-home-hero" id="topo" aria-label="Apresentação do Restaurante Mauricio’s">
+      <div class="hero-stage surface-dark">
+        <div class="hero-media">
+          <img
+            src="./assets/varanda-hero.jpg"
+            alt="Varanda arborizada com mesas do Restaurante Mauricio’s em Itaipava"
+            width="1440"
+            height="1286"
+            loading="eager"
+            fetchpriority="high"
+            decoding="sync"
+          >
+        </div>
+        <div class="hero-scrim" aria-hidden="true"></div>
+
+        <div class="container hero-content">
+          <span class="eyebrow hero-kicker">Restaurante em Itaipava</span>
+          <h1 class="hero-title">Mauricio’s</h1>
+          <p class="hero-subtitle">
+            Frutos do mar, chapas quentes e mais de 60 anos de tradição em Itaipava.
+          </p>
+          <div class="hero-actions">
+            <a class="pill pill--cream" href="./cardapio.html">
+              <span class="btn-text-wrap">
+                <span class="btn-text">Ver cardápio</span>
+                <span class="btn-text-hover" aria-hidden="true">Ver cardápio</span>
+              </span>
+            </a>
+            <a class="pill pill--outline-light" href="#visite-nos">
+              <span class="btn-text-wrap">
+                <span class="btn-text">Como chegar</span>
+                <span class="btn-text-hover" aria-hidden="true">Como chegar</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="manifesto-stage" id="a-casa">
+        <div class="container manifesto-canvas">
+          <figure class="collage-item collage-item--1" data-parallax="-58" data-parallax-mobile="-14">
+            <img src="./assets/fachada-altair.jpg" alt="Entrada do Restaurante Mauricio’s no Shopping Altair" width="1440" height="1280" loading="lazy" decoding="async">
+          </figure>
+          <figure class="collage-item collage-item--2" data-parallax="36" data-parallax-mobile="12">
+            <img src="./assets/empada-camarao.jpg" alt="Empada de camarão dourada" width="938" height="1250" loading="lazy" decoding="async">
+          </figure>
+          <figure class="collage-item collage-item--3" data-parallax="-28" data-parallax-mobile="-12">
+            <img src="./assets/caipirinha-tangerina.jpg" alt="Caipirinha de tangerina com pimenta" width="703" height="1250" loading="lazy" decoding="async">
+          </figure>
+          <figure class="collage-item collage-item--4" data-parallax="52" data-parallax-mobile="16">
+            <img src="./assets/arroz-camarao.jpg" alt="Arroz de camarão servido na travessa" width="703" height="1250" loading="lazy" decoding="async">
+          </figure>
+          <figure class="collage-item collage-item--5" data-parallax="-42" data-parallax-mobile="-15">
+            <img src="./assets/picanha-pedra.jpg" alt="Picanha servida quente na pedra" width="1200" height="1600" loading="lazy" decoding="async">
+          </figure>
+          <figure class="collage-item collage-item--6" data-parallax="25" data-parallax-mobile="12">
+            <img src="./assets/brinde-vinhos.jpg" alt="Taças em mesa preparada para o jantar" width="1200" height="1600" loading="lazy" decoding="async">
+          </figure>
+          <figure class="collage-item collage-item--7" data-parallax="-34" data-parallax-mobile="-14">
+            <img src="./assets/panela-camarao.jpg" alt="Panela com preparo de camarão servido quente" width="1200" height="1600" loading="lazy" decoding="async">
+          </figure>
+
+          <div class="manifesto-copy">
+            <span class="eyebrow">A casa</span>
+            <h2 class="manifesto-title" data-split-lines>
+              Da serra,<br>
+              <em>uma mesa de mar.</em>
+            </h2>
+            <p class="manifesto-lead">
+              Da varanda ao salão, o bobó vem na panela e a carne chega na pedra.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Faixa Confianca -->
+    <section class="section-trust" aria-label="Tradição, avaliação e acesso">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <span class="trust-metric">60+</span>
+          <span class="trust-label">anos de tradição em Itaipava</span>
+        </div>
+
+        <div class="trust-item">
+          <span class="trust-metric">4,7 / 5</span>
+          <span class="trust-label">390 avaliações no Google</span>
+        </div>
+
+        <div class="trust-item trust-item--place">
+          <span class="trust-metric trust-metric--place">Shopping Altair</span>
+          <span class="trust-label">Estacionamento gratuito e acessibilidade</span>
+        </div>
+
+        <div class="trust-cta">
+          <a class="pill pill--dark" href="./cardapio.html">
+            <span class="btn-text-wrap">
+              <span class="btn-text">Ver cardápio</span>
+              <span class="btn-text-hover" aria-hidden="true">Ver cardápio</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Carrossel Monumental de 4 Categorias -->
+    <section
+      class="section-categories surface-dark"
+      id="especialidades"
+      aria-roledescription="carrossel"
+      aria-label="Especialidades da casa"
+    >
+      <div class="categories-stage">
+        <article class="category-slide is-active" id="slide-0" role="tabpanel" aria-labelledby="tab-0">
+          <div class="category-slide-media">
+            <img src="./assets/chiclete-camarao.jpg" alt="Chiclete de camarão gratinado na travessa" width="1250" height="562" loading="lazy" decoding="async">
+          </div>
+          <div class="category-slide-scrim" aria-hidden="true"></div>
+          <div class="container category-slide-body">
+            <div class="category-meta">
+              <span class="eyebrow">Especialidades</span>
+              <span class="category-counter">1 de 4</span>
+            </div>
+            <h2 class="category-title">Frutos do Mar</h2>
+            <p class="category-desc">Do bobó à moqueca, o camarão chega à mesa na panela.</p>
+            <div class="category-cta-wrap">
+              <a class="pill pill--cream" href="./cardapio.html#frutos-do-mar">
+                <span class="btn-text-wrap">
+                  <span class="btn-text">Ver frutos do mar</span>
+                  <span class="btn-text-hover" aria-hidden="true">Ver frutos do mar</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="category-slide" id="slide-1" role="tabpanel" aria-labelledby="tab-1" hidden>
+          <div class="category-slide-media">
+            <img src="./assets/picanha-pedra.jpg" alt="Picanha servida quente na pedra com acompanhamentos" width="1200" height="1600" loading="lazy" decoding="async">
+          </div>
+          <div class="category-slide-scrim" aria-hidden="true"></div>
+          <div class="container category-slide-body">
+            <div class="category-meta">
+              <span class="eyebrow">Especialidades</span>
+              <span class="category-counter">2 de 4</span>
+            </div>
+            <h2 class="category-title">Chapas &amp; Carnes</h2>
+            <p class="category-desc">Picanha na pedra e filés para o almoço na serra.</p>
+            <div class="category-cta-wrap">
+              <a class="pill pill--cream" href="./cardapio.html#chapas-e-carnes">
+                <span class="btn-text-wrap">
+                  <span class="btn-text">Ver chapas e carnes</span>
+                  <span class="btn-text-hover" aria-hidden="true">Ver chapas e carnes</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="category-slide" id="slide-2" role="tabpanel" aria-labelledby="tab-2" hidden>
+          <div class="category-slide-media">
+            <img src="./assets/caipirinha-tangerina.jpg" alt="Caipirinha de tangerina preparada no bar da casa" width="703" height="1250" loading="lazy" decoding="async">
+          </div>
+          <div class="category-slide-scrim" aria-hidden="true"></div>
+          <div class="container category-slide-body">
+            <div class="category-meta">
+              <span class="eyebrow">Especialidades</span>
+              <span class="category-counter">3 de 4</span>
+            </div>
+            <h2 class="category-title">Entradas &amp; Bar</h2>
+            <p class="category-desc">Empadas, petiscos e uma caipirinha para começar.</p>
+            <div class="category-cta-wrap">
+              <a class="pill pill--cream" href="./cardapio.html#entradas-e-petiscos">
+                <span class="btn-text-wrap">
+                  <span class="btn-text">Ver entradas e bar</span>
+                  <span class="btn-text-hover" aria-hidden="true">Ver entradas e bar</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="category-slide" id="slide-3" role="tabpanel" aria-labelledby="tab-3" hidden>
+          <div class="category-slide-media">
+            <img src="./assets/flan-caramelo.jpg" alt="Flan com calda de caramelo da casa" width="938" height="1250" loading="lazy" decoding="async">
+          </div>
+          <div class="category-slide-scrim" aria-hidden="true"></div>
+          <div class="container category-slide-body">
+            <div class="category-meta">
+              <span class="eyebrow">Especialidades</span>
+              <span class="category-counter">4 de 4</span>
+            </div>
+            <h2 class="category-title">Sobremesas</h2>
+            <p class="category-desc">Flan e banana flambada para fechar o almoço.</p>
+            <div class="category-cta-wrap">
+              <a class="pill pill--cream" href="./cardapio.html#sobremesas">
+                <span class="btn-text-wrap">
+                  <span class="btn-text">Ver sobremesas</span>
+                  <span class="btn-text-hover" aria-hidden="true">Ver sobremesas</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="container carousel-controls">
+        <div class="carousel-tabs" role="tablist" aria-label="Escolher especialidade">
+          <button class="carousel-tab" id="tab-0" type="button" role="tab" aria-selected="true" aria-controls="slide-0" data-slide="0">Frutos do Mar</button>
+          <button class="carousel-tab" id="tab-1" type="button" role="tab" aria-selected="false" aria-controls="slide-1" data-slide="1">Chapas &amp; Carnes</button>
+          <button class="carousel-tab" id="tab-2" type="button" role="tab" aria-selected="false" aria-controls="slide-2" data-slide="2">Entradas &amp; Bar</button>
+          <button class="carousel-tab" id="tab-3" type="button" role="tab" aria-selected="false" aria-controls="slide-3" data-slide="3">Sobremesas</button>
+        </div>
+
+        <div class="carousel-arrows">
+          <button class="carousel-arrow" type="button" id="carousel-prev" aria-label="Categoria anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="carousel-arrow" type="button" id="carousel-next" aria-label="Próxima categoria">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Assinaturas da Casa + Section Break -->
+    <section class="section-signatures" aria-labelledby="heading-assinaturas">
+      <div class="container">
+        <span class="eyebrow">Cozinha do Mauricio’s</span>
+        <h2 class="display-heading section-heading" id="heading-assinaturas" data-split-lines>Assinaturas da casa</h2>
+
+        <div class="signatures-grid">
+          <article class="signature-card">
+            <div class="signature-photo">
+              <img src="./assets/moqueca-camarao.jpg" alt="Moqueca de camarão servida na panela com acompanhamentos" width="938" height="1250" loading="lazy" decoding="async">
+            </div>
+            <h3 class="signature-title">Clássicos de camarão</h3>
+            <p class="signature-desc">
+              Chiclete, moqueca e bobó são os destaques de camarão da casa.
+            </p>
+            <div class="signature-cta">
+              <a class="pill pill--outline-dark" href="./cardapio.html#frutos-do-mar">
+                <span class="btn-text-wrap">
+                  <span class="btn-text">Ver frutos do mar</span>
+                  <span class="btn-text-hover" aria-hidden="true">Ver frutos do mar</span>
+                </span>
+              </a>
+            </div>
+          </article>
+
+          <article class="signature-card signature-card--offset">
+            <div class="signature-photo">
+              <img src="./assets/picanha-pedra.jpg" alt="Chapa quente com picanha na pedra e guarnições" width="1200" height="1600" loading="lazy" decoding="async">
+            </div>
+            <h3 class="signature-title">Chapas quentes &amp; executivo</h3>
+            <p class="signature-desc">
+              Picanha na pedra, filé à piamontese e opções para o almoço.
+            </p>
+            <div class="signature-cta">
+              <a class="pill pill--outline-dark" href="./cardapio.html#chapas-e-carnes">
+                <span class="btn-text-wrap">
+                  <span class="btn-text">Ver chapas e carnes</span>
+                  <span class="btn-text-hover" aria-hidden="true">Ver chapas e carnes</span>
+                </span>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <div class="section-break" aria-hidden="true">
+          <span class="section-break-border section-break-border--left"></span>
+          <span class="monogram-mark">M</span>
+          <span class="section-break-border section-break-border--right"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Trio de Midia Assimetrico -->
+    <section class="section-media-group" aria-label="Galeria de mesa, varanda e bar">
+      <div class="container trio-grid">
+        <figure class="trio-card trio-card--left" data-trio-y="-38" data-trio-y-mobile="-10">
+          <img src="./assets/panela-camarao.jpg" alt="Panela quente servida à mesa no Mauricio’s" width="1200" height="1600" loading="lazy" decoding="async">
+        </figure>
+        <figure class="trio-card trio-card--center" data-trio-y="58" data-trio-y-mobile="16">
+          <img src="./assets/varanda-hero.jpg" alt="Varanda ampla com mesas ao ar livre" width="1440" height="1286" loading="lazy" decoding="async">
+        </figure>
+        <figure class="trio-card trio-card--right" data-trio-y="-22" data-trio-y-mobile="-6">
+          <img src="./assets/caipirinha-tangerina.jpg" alt="Caipirinha de tangerina e pimenta" width="703" height="1250" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <!-- 7. Avaliacoes -->
+    <section class="section-reviews" id="avaliacoes" aria-labelledby="heading-avaliacoes">
+      <div class="container reviews-grid">
+        <div>
+          <span class="eyebrow">Avaliações no Google</span>
+          <p class="reviews-score">4,7 / 5</p>
+          <p class="reviews-count">390 avaliações</p>
+        </div>
+
+        <div class="reviews-divider" aria-hidden="true"></div>
+
+        <div>
+          <h2 class="display-heading reviews-title" id="heading-avaliacoes" data-split-lines>O que chega à mesa</h2>
+          <p class="reviews-summary">
+            O bobó e o chiclete de camarão aparecem nas avaliações, junto aos pratos fartos e quentes e ao ambiente tranquilo.
+          </p>
+          <div class="reviews-cta">
+            <a
+              class="pill pill--dark"
+              href="https://www.google.com/maps/search/?api=1&amp;query=Restaurante+Mauricio%27s+Itaipava&amp;query_place_id=ChIJVUDop_5UmAARL4ryjMd0rLM"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="btn-text-wrap">
+                <span class="btn-text">Ler no Google</span>
+                <span class="btn-text-hover" aria-hidden="true">Ler no Google</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Experiencia na Serra -->
+    <section class="section-experience surface-dark" id="experiencia" aria-labelledby="heading-experiencia">
+      <div class="experience-grid">
+        <div class="experience-photo">
+          <img src="./assets/salao-lareira.jpg" alt="Salão interno acolhedor do Restaurante Mauricio’s com bar e lareira" width="1600" height="900" loading="lazy" decoding="async">
+        </div>
+
+        <div class="experience-panel">
+          <span class="eyebrow">Experiência na serra</span>
+          <h2 class="display-heading experience-title" id="heading-experiencia" data-split-lines>
+            Varanda de dia.<br>
+            <em>Lareira no frio.</em>
+          </h2>
+          <div class="experience-copy">
+            <p>
+              Há mesas ao ar livre para os dias claros e um salão com lareira para o inverno. Do bar vêm caipirinhas, batidas e vinhos.
+            </p>
+            <p>
+              Para quem vem com crianças, a casa tem cadeirinhas e cardápio infantil.
+            </p>
+          </div>
+          <div class="experience-cta">
+            <a
+              class="pill pill--cream"
+              href="https://wa.me/5524993061488?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20reserva%20de%20mesa%20no%20Restaurante%20Mauricio%E2%80%99s."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="btn-text-wrap">
+                <span class="btn-text">Consultar reserva</span>
+                <span class="btn-text-hover" aria-hidden="true">Consultar reserva</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Visite-nos -->
+    <section class="section-visit" id="visite-nos" aria-labelledby="heading-visite">
+      <div class="container visit-grid">
+        <div class="visit-info">
+          <span class="eyebrow">Visite-nos</span>
+          <h2 class="display-heading visit-title" id="heading-visite" data-split-lines>À mesa em Itaipava</h2>
+          <p class="visit-place">Shopping Altair · Andar G</p>
+          <address class="visit-address">
+            Estr. União e Indústria, 11811 · Lojas 5/6<br>
+            Itaipava, Petrópolis – RJ · CEP 25750-225
+          </address>
+
+          <dl class="hours-list">
+            <div class="hours-row">
+              <dt>Segunda a quarta</dt>
+              <dd>11h–18h</dd>
+            </div>
+            <div class="hours-row">
+              <dt>Quinta e sexta</dt>
+              <dd>11h–22h</dd>
+            </div>
+            <div class="hours-row">
+              <dt>Sábado e domingo</dt>
+              <dd>11h–19h</dd>
+            </div>
+          </dl>
+          <p class="hours-note">Horários do Google Maps (nov/2026). Confirme feriados com a casa.</p>
+
+          <div class="visit-phones">
+            <a class="visit-phone" href="tel:+552422319974">(24) 2231-9974</a>
+            <a class="visit-phone" href="https://wa.me/5524993061488" target="_blank" rel="noopener noreferrer">(24) 99306-1488</a>
+          </div>
+
+          <div class="visit-actions">
+            <a
+              class="pill pill--dark"
+              href="https://www.google.com/maps/search/?api=1&amp;query=Restaurante+Mauricio%27s+Itaipava&amp;query_place_id=ChIJVUDop_5UmAARL4ryjMd0rLM"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="btn-text-wrap">
+                <span class="btn-text">Abrir no Google Maps</span>
+                <span class="btn-text-hover" aria-hidden="true">Abrir no Google Maps</span>
+              </span>
+            </a>
+            <a
+              class="pill pill--outline-dark"
+              href="https://wa.me/5524993061488"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="btn-text-wrap">
+                <span class="btn-text">Chamar no WhatsApp</span>
+                <span class="btn-text-hover" aria-hidden="true">Chamar no WhatsApp</span>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="visit-media">
+          <figure>
+            <div class="visit-photo">
+              <img src="./assets/fachada-altair.jpg" alt="Entrada do Restaurante Mauricio’s no Shopping Altair em Itaipava" width="1440" height="1280" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="visit-caption">Entrada do restaurante no Shopping Altair</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Convites a Mesa -->
+    <section class="section-moments" aria-labelledby="heading-momentos">
+      <div class="container">
+        <span class="eyebrow">Momentos da casa</span>
+        <h2 class="display-heading moments-title" id="heading-momentos" data-split-lines>Convites à mesa</h2>
+
+        <div class="moments-grid">
+          <article class="moment-card">
+            <div class="moment-photo">
+              <img src="./assets/frango-grelhado.jpg" alt="Prato executivo com frango grelhado e acompanhamentos" width="1600" height="1200" loading="lazy" decoding="async">
+            </div>
+            <h3 class="moment-title">Almoço executivo</h3>
+            <p class="moment-desc">De segunda a quarta, consulte o prato executivo do dia.</p>
+            <div class="moment-cta">
+              <a class="pill pill--outline-dark" href="./cardapio.html#executivo">
+                <span class="btn-text-wrap">
+                  <span class="btn-text">Ver executivo</span>
+                  <span class="btn-text-hover" aria-hidden="true">Ver executivo</span>
+                </span>
+              </a>
+            </div>
+          </article>
+
+          <article class="moment-card">
+            <div class="moment-photo">
+              <img src="./assets/brinde-vinhos.jpg" alt="Taças servidas na mesa para noites de quinta e sexta" width="1200" height="1600" loading="lazy" decoding="async">
+            </div>
+            <h3 class="moment-title">Lareira e vinhos</h3>
+            <p class="moment-desc">Nas noites de quinta e sexta, a lareira faz companhia à mesa.</p>
+            <div class="moment-cta">
+              <a class="pill pill--outline-dark" href="#visite-nos">
+                <span class="btn-text-wrap">
+                  <span class="btn-text">Consultar horários</span>
+                  <span class="btn-text-hover" aria-hidden="true">Consultar horários</span>
+                </span>
+              </a>
+            </div>
+          </article>
+
+          <article class="moment-card">
+            <div class="moment-photo">
+              <img src="./assets/momento-salao.jpg" alt="Salão amplo para encontros em família no Shopping Altair" width="1250" height="703" loading="lazy" decoding="async">
+            </div>
+            <h3 class="moment-title">Encontros em família</h3>
+            <p class="moment-desc">Reserve com a casa para reunir o grupo no Shopping Altair.</p>
+            <div class="moment-cta">
+              <a
+                class="pill pill--outline-dark"
+                href="https://wa.me/5524993061488?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20reserva%20para%20grupo%20no%20Restaurante%20Mauricio%E2%80%99s."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="btn-text-wrap">
+                  <span class="btn-text">Consultar reserva</span>
+                  <span class="btn-text-hover" aria-hidden="true">Consultar reserva</span>
+                </span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. FAQ em Acordeao -->
+    <section class="section-faq" aria-labelledby="heading-faq">
+      <div class="container faq-grid">
+        <div>
+          <span class="eyebrow">Informações úteis</span>
+          <h2 class="display-heading faq-title" id="heading-faq" data-split-lines>
+            Antes<br>da visita
+          </h2>
+          <p class="faq-help">Prefere conversar com a casa?</p>
+          <div class="faq-cta">
+            <a class="pill pill--dark" href="https://wa.me/5524993061488" target="_blank" rel="noopener noreferrer">
+              <span class="btn-text-wrap">
+                <span class="btn-text">Chamar no WhatsApp</span>
+                <span class="btn-text-hover" aria-hidden="true">Chamar no WhatsApp</span>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3>
+              <button class="faq-trigger" type="button" aria-expanded="true" aria-controls="faq-panel-1" id="faq-btn-1">
+                <span>Como pedir entrega ou retirada?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-panel-1" role="region" aria-labelledby="faq-btn-1" data-open="true">
+              <div class="faq-answer">
+                Escolha os pratos no cardápio e revise o resumo. A casa confirma disponibilidade, taxa e horário pelo WhatsApp (24) 99306-1488.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3>
+              <button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-panel-2" id="faq-btn-2">
+                <span>Posso reservar uma mesa?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-panel-2" role="region" aria-labelledby="faq-btn-2" hidden>
+              <div class="faq-answer">
+                Sim. Consulte a casa pelo WhatsApp para grupos, fins de semana ou jantares de quinta e sexta.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3>
+              <button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-panel-3" id="faq-btn-3">
+                <span>Há estacionamento e acessibilidade?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-panel-3" role="region" aria-labelledby="faq-btn-3" hidden>
+              <div class="faq-answer">
+                O Shopping Altair oferece estacionamento gratuito. A ficha do restaurante informa entrada, mesas, banheiro e vagas acessíveis.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3>
+              <button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-panel-4" id="faq-btn-4">
+                <span>Quais pagamentos são aceitos?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-panel-4" role="region" aria-labelledby="faq-btn-4" hidden>
+              <div class="faq-answer">
+                A ficha informa crédito, débito, aproximação, Alelo, Pluxee e vale-refeição. Confirme seu benefício ao pedir.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <h3>
+              <button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-panel-5" id="faq-btn-5">
+                <span>Há carnes e pratos infantis?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq-panel" id="faq-panel-5" role="region" aria-labelledby="faq-btn-5" hidden>
+              <div class="faq-answer">
+                Sim. Há chapas quentes, filés, opções executivas e cardápio infantil. O bar serve batidas e outras bebidas.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. Faixa Instagram -->
+    <section class="section-instagram" aria-labelledby="heading-instagram">
+      <div class="container">
+        <div class="instagram-header">
+          <div>
+            <span class="eyebrow">Instagram</span>
+            <h2 class="display-heading instagram-handle" id="heading-instagram">@restaurante.mauricios</h2>
+          </div>
+          <a
+            class="pill pill--dark"
+            href="https://www.instagram.com/restaurante.mauricios/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="btn-text-wrap">
+              <span class="btn-text">Ver nosso Instagram</span>
+              <span class="btn-text-hover" aria-hidden="true">Ver nosso Instagram</span>
+            </span>
+          </a>
+        </div>
+
+        <div class="instagram-gallery">
+          <div class="instagram-frame">
+            <img src="./assets/empada-camarao.jpg" alt="Empada de camarão registrada na unidade" width="938" height="1250" loading="lazy" decoding="async">
+          </div>
+          <div class="instagram-frame instagram-frame--low">
+            <img src="./assets/varanda-hero.jpg" alt="Varanda ao ar livre em Itaipava" width="1440" height="1286" loading="lazy" decoding="async">
+          </div>
+          <div class="instagram-frame">
+            <img src="./assets/chiclete-camarao.jpg" alt="Chiclete de camarão gratinado" width="1250" height="562" loading="lazy" decoding="async">
+          </div>
+          <div class="instagram-frame instagram-frame--low">
+            <img src="./assets/brinde-vinhos.jpg" alt="Mesa com taças para o jantar" width="1200" height="1600" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <p class="instagram-note">Fotos da unidade no Google Maps.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- 13. Rodape -->
+  <footer class="site-footer surface-dark">
+    <div class="container">
+      <div class="section-break section-break--dark" aria-hidden="true">
+        <span class="section-break-border section-break-border--left"></span>
+        <span class="monogram-mark">M</span>
+        <span class="section-break-border section-break-border--right"></span>
+      </div>
+
+      <p class="footer-wordmark" aria-hidden="true">Mauricio’s</p>
+
+      <div class="footer-columns">
+        <div class="footer-col">
+          <span class="eyebrow">Visite-nos</span>
+          <p>
+            Shopping Altair · Andar G<br>
+            Estr. União e Indústria, 11811 · Lojas 5/6<br>
+            Itaipava, Petrópolis – RJ · CEP 25750-225
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <span class="eyebrow">Horários</span>
+          <p>
+            Seg–Qua 11h–18h<br>
+            Qui–Sex 11h–22h<br>
+            Sáb–Dom 11h–19h
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <span class="eyebrow">Contato</span>
+          <div class="footer-contact-links">
+            <a href="tel:+552422319974">(24) 2231-9974</a>
+            <a href="https://wa.me/5524993061488" target="_blank" rel="noopener noreferrer">(24) 99306-1488</a>
+          </div>
+        </div>
+
+        <div class="footer-col footer-cta-col">
+          <a class="pill pill--cream" href="./cardapio.html">
+            <span class="btn-text-wrap">
+              <span class="btn-text">Ver cardápio</span>
+              <span class="btn-text-hover" aria-hidden="true">Ver cardápio</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <nav class="footer-nav" aria-label="Links do rodapé">
+          <a href="#a-casa">A casa</a>
+          <a href="#especialidades">Especialidades</a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Restaurante+Mauricio%27s+Itaipava&amp;query_place_id=ChIJVUDop_5UmAARL4ryjMd0rLM" target="_blank" rel="noopener noreferrer">Google Maps</a>
+          <a href="https://www.instagram.com/restaurante.mauricios/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </nav>
+        <p class="footer-credit">Restaurante Mauricio’s · Itaipava, Petrópolis</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+  <script src="./js/main.js" defer></script>
+</body>
+</html>
