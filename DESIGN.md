@@ -113,3 +113,10 @@ Abertura com a varanda da unidade, de **mari rellan**, julho de 2021. O salão c
 
 Antes do uso público, confirmar marca em vetor, autorização das imagens, cardápio vigente, preços, porções, taxa e área de entrega, disponibilidade do executivo e horários em feriados. A prévia usa fotografias reais, palavra-marca e preços provisórios. O repositório, o código final e a publicação pertencem à etapa de frontend.
 
+## Evolução v2.1
+
+- Boska regular e itálica dão mais contraste aos títulos. Switzer mantém rótulos, preços e textos corridos legíveis. As duas famílias são fornecidas pela Fontshare e têm fontes de sistema de reserva.
+- A abertura reúne o traço do monograma, duas lâminas que abrem sobre a varanda e a entrada escalonada do nome. A composição encerra em cerca de 1,7 s. Rolagem e foco podem adiantar a entrada.
+- No manifesto, as sete fotos ganham deslocamento horizontal e vertical e giro de sentidos alternados conforme a rolagem. No celular, a composição de seis fotos usa amplitudes menores. Nos blocos seguintes, os recortes das fotos abrem por bordas alternadas e os títulos entram sob máscaras de linha.
+- A primeira dobra usa a marca em cobre sobre a varanda, com o cardápio e a navegação no cabeçalho. A composição, a serifa de contraste e os controles retangulares de 4 px com letras espaçadas partem da [referência Zimmerl](https://www.restaurantzimmerl.at/). Os botões verdes usam rótulos em cobre e passagem de cor a partir do lado de entrada do ponteiro. O foco de teclado mantém feedback e o movimento reduzido suprime as transições.
+- Referências de mecânica no GSAP Demo Hub incluem [DrawSVG](https://demos.gsap.com/plugin/drawsvg/), [SplitText](https://demos.gsap.com/plugin/splittext/) e [ScrollTrigger](https://demos.gsap.com/plugin/scrolltrigger/). O monograma usa o traço do SVG nativo e os recortes preservam a composição do Mauricio’s.

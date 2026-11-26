@@ -34,7 +34,7 @@
 .menu-back-link {
   min-height: 44px;
   padding: 8px 18px;
-  border-radius: 999px;
+  border-radius: var(--button-radius);
   border: 1px solid rgba(255, 255, 255, 0.55);
   font-size: 14px;
   font-weight: 500;
@@ -93,7 +93,7 @@
   display: inline-flex;
   align-items: center;
   padding: 4px 12px;
-  border-radius: 999px;
+  border-radius: var(--button-radius);
   background-color: var(--sage);
   color: var(--ink);
   font-size: 12px;
@@ -110,7 +110,7 @@
   width: 100%;
   min-height: 46px;
   padding: 10px 76px 10px 16px;
-  border-radius: 999px;
+  border-radius: var(--button-radius);
   border: 1px solid var(--rule);
   background-color: var(--cream);
   color: var(--ink);
@@ -137,7 +137,7 @@
   transform: translateY(-50%);
   min-height: 36px;
   padding: 6px 12px;
-  border-radius: 999px;
+  border-radius: var(--button-radius);
   font-size: 12px;
   font-weight: 600;
   color: var(--deep);
@@ -176,7 +176,7 @@
   flex-shrink: 0;
   min-height: 44px;
   padding: 9px 16px;
-  border-radius: 999px;
+  border-radius: var(--button-radius);
   border: 1px solid var(--rule);
   background-color: var(--paper);
   color: var(--ink);
@@ -244,7 +244,7 @@
   color: var(--muted);
 }
 
-.empty-search .pill {
+.empty-search .button {
   margin-top: 20px;
 }
 
@@ -332,7 +332,7 @@
   top: 10px;
   left: 10px;
   padding: 4px 10px;
-  border-radius: 999px;
+  border-radius: var(--button-radius);
   background-color: var(--deep);
   color: var(--on-dark);
   font-size: 11px;
@@ -372,6 +372,7 @@
 }
 
 .dish-card-price {
+  font-variant-numeric: tabular-nums;
   font-size: 16px;
   font-weight: 600;
   color: var(--ink);
@@ -380,7 +381,7 @@
 .dish-card-add {
   min-height: 38px;
   padding: 6px 14px;
-  border-radius: 999px;
+  border-radius: var(--button-radius);
   background-color: var(--deep);
   color: var(--on-dark);
   font-size: 13px;
@@ -510,7 +511,7 @@
 .cart-drawer-close {
   min-height: 44px;
   padding: 8px 16px;
-  border-radius: 999px;
+  border-radius: var(--button-radius);
   border: 1px solid var(--rule);
   font-size: 13px;
   font-weight: 500;
@@ -586,7 +587,7 @@
   display: inline-flex;
   align-items: center;
   border: 1px solid var(--rule);
-  border-radius: 999px;
+  border-radius: var(--button-radius);
   background-color: var(--paper);
 }
 
@@ -598,7 +599,7 @@
   justify-content: center;
   font-size: 18px;
   font-weight: 500;
-  border-radius: 999px;
+  border-radius: var(--button-radius);
 }
 
 .qty-btn:hover {
@@ -626,14 +627,14 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 8px;
   padding: 4px;
-  border-radius: 999px;
+  border-radius: var(--button-radius);
   background-color: var(--paper);
   border: 1px solid var(--rule);
 }
 
 .fulfillment-btn {
   min-height: 44px;
-  border-radius: 999px;
+  border-radius: var(--button-radius);
   font-size: 14px;
   font-weight: 500;
   color: var(--muted);
@@ -699,6 +700,7 @@
 }
 
 .cart-subtotal-value {
+  font-variant-numeric: tabular-nums;
   font-family: var(--font-display);
   font-size: 32px;
   line-height: 1;
@@ -749,6 +751,7 @@
 }
 
 .mobile-bar-total {
+  font-variant-numeric: tabular-nums;
   font-family: var(--font-display);
   font-size: 28px;
   line-height: 1;
@@ -802,7 +805,7 @@
   min-width: 44px;
   min-height: 44px;
   padding: 8px 14px;
-  border-radius: 999px;
+  border-radius: var(--button-radius);
   background-color: var(--paper);
   color: var(--ink);
   border: 1px solid var(--rule);
@@ -852,6 +855,7 @@
 }
 
 .modal-price {
+  font-variant-numeric: tabular-nums;
   font-size: 18px;
   font-weight: 600;
 }
@@ -870,7 +874,7 @@
   margin-top: 6px;
 }
 
-.modal-footer-actions .pill {
+.modal-footer-actions .button {
   flex: 1;
 }
 
@@ -884,6 +888,7 @@
 }
 
 .review-row {
+  font-variant-numeric: tabular-nums;
   display: flex;
   justify-content: space-between;
   gap: 12px;

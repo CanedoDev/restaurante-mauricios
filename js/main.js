@@ -2,7 +2,6 @@
   'use strict';
 
   const prefersReduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isFinePointer = () => window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   /* ---------- 1. Header scrolled a partir de 72px ---------- */
   const header = document.getElementById('site-header');
@@ -17,7 +16,9 @@
   const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   const menuClose = document.getElementById('mobile-menu-close');
-  const mainEl = document.getElementById('conteudo-principal');
+  const menuBackground = [header, document.getElementById('conteudo-principal'),
+    document.querySelector('.site-footer'), document.querySelector('.skip-link')].filter(Boolean);
+  if (menuToggle && mobileMenu) header.classList.add('has-menu');
   let lastTriggerEl = null;
 
   const setMenuLinesDelay = () => {
@@ -36,11 +37,11 @@
   const closeMobileMenu = (restoreFocus = true) => {
     if (!mobileMenu || !mobileMenu.classList.contains('is-open')) return;
     mobileMenu.classList.remove('is-open');
-    mobileMenu.setAttribute('aria-hidden', 'true');
     mobileMenu.inert = true;
+    mobileMenu.setAttribute('aria-hidden', 'true');
     if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('menu-open');
-    if (mainEl) mainEl.inert = false;
+    menuBackground.forEach((element) => { element.inert = false; });
     if (restoreFocus && lastTriggerEl && typeof lastTriggerEl.focus === 'function') {
       lastTriggerEl.focus({ preventScroll: true });
     }
@@ -55,7 +56,7 @@
     mobileMenu.setAttribute('aria-hidden', 'false');
     if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
     document.body.classList.add('menu-open');
-    if (mainEl) mainEl.inert = true;
+    menuBackground.forEach((element) => { element.inert = true; });
     void mobileMenu.offsetWidth;
     if (menuClose) menuClose.focus({ preventScroll: true });
     requestAnimationFrame(() => {
@@ -248,6 +249,7 @@
 
     btn.setAttribute('aria-expanded', String(shouldOpen));
     const useImmediate = immediate || prefersReduced() || typeof window.gsap === 'undefined';
+    window.gsap?.killTweensOf(panel);
 
     if (shouldOpen) {
       panel.hidden = false;
@@ -257,7 +259,6 @@
         return;
       }
       const targetHeight = panel.scrollHeight;
-      window.gsap.killTweensOf(panel);
       window.gsap.fromTo(
         panel,
         { height: 0 },
@@ -267,6 +268,7 @@
           ease: 'power2.out',
           onComplete: () => {
             panel.style.height = 'auto';
+            window.ScrollTrigger?.refresh(true);
           }
         }
       );
@@ -277,8 +279,7 @@
         panel.hidden = true;
         return;
       }
-      window.gsap.killTweensOf(panel);
-      const currentHeight = panel.scrollHeight;
+      const currentHeight = panel.getBoundingClientRect().height;
       window.gsap.fromTo(
         panel,
         { height: currentHeight },
@@ -288,6 +289,7 @@
           ease: 'power2.in',
           onComplete: () => {
             panel.hidden = true;
+            window.ScrollTrigger?.refresh(true);
           }
         }
       );
@@ -311,302 +313,260 @@
     });
   });
 
-  /* ---------- 5. Botoes pilula .btn-text / .btn-text-hover ---------- */
-  const initPillHover = () => {
-    if (!isFinePointer() || prefersReduced() || typeof window.gsap === 'undefined') return;
-    document.querySelectorAll('.pill').forEach((btn) => {
-      const primary = btn.querySelector('.btn-text');
-      const hover = btn.querySelector('.btn-text-hover');
-      if (!primary || !hover) return;
-
-      const tl = window.gsap.timeline({ paused: true });
-      tl.to(primary, { yPercent: -105, duration: 0.28, ease: 'power2.out' }, 0)
-        .fromTo(
-          hover,
-          { yPercent: 105, scale: 0.9 },
-          { yPercent: 0, scale: 1, duration: 0.28, ease: 'power2.out' },
-          0
-        );
-
-      btn.addEventListener('mouseenter', () => tl.play());
-      btn.addEventListener('mouseleave', () => tl.reverse());
-      btn.addEventListener('focusin', () => tl.play());
-      btn.addEventListener('focusout', () => tl.reverse());
+  /* ---------- 5. Sentido da passagem de cor nos botões ---------- */
+  document.querySelectorAll('.button').forEach((button) => {
+    button.addEventListener('pointerenter', (event) => {
+      if (event.pointerType !== 'mouse') return;
+      const { left, width } = button.getBoundingClientRect();
+      const fromLeft = event.clientX < left + width / 2;
+      button.style.setProperty('--button-from', fromLeft ? '-103%' : '103%');
     });
-  };
-
-  /* ---------- 6. Split de linhas para titulos internos ---------- */
-  const splitTargets = Array.from(document.querySelectorAll('[data-split-lines]'));
-  splitTargets.forEach((el) => {
-    el.dataset.originalHtml = el.innerHTML;
   });
 
-  const buildLineMasks = () => {
-    splitTargets.forEach((el) => {
-      const original = el.dataset.originalHtml;
-      if (!original) return;
-      const ariaLabel = el.textContent.replace(/\s+/g, ' ').trim();
-      el.setAttribute('aria-label', ariaLabel);
+  /* ---------- 6. Abertura da varanda ---------- */
+  let openingPlayed = false;
 
-      const parts = original.split(/<br\s*\/?>/i);
-      el.innerHTML = parts
-        .map((part) => `<span class="line-mask" aria-hidden="true"><span class="line-inner">${part.trim()}</span></span>`)
+  const playOpening = (gsap) => {
+    if (openingPlayed || window.location.hash || window.scrollY > 2 || performance.now() > 1400) return;
+
+    const hero = document.querySelector('.hero-stage');
+    const intro = document.getElementById('intro-stage');
+    if (!hero || !intro) return;
+    openingPlayed = true;
+
+    const title = hero.querySelector('.hero-title');
+    const name = title.textContent;
+    const image = hero.querySelector('.hero-media img');
+    const oval = intro.querySelector('.intro-oval-path');
+    const perimeter = oval.getTotalLength();
+
+    // The title is a single word. Restore its natural kerning after the entrance.
+    const letters = Array.from(name, (letter) => {
+      const mask = document.createElement('span');
+      const glyph = document.createElement('span');
+      mask.className = 'char-mask';
+      mask.setAttribute('aria-hidden', 'true');
+      glyph.className = 'char-inner';
+      glyph.textContent = letter;
+      mask.append(glyph);
+      return mask;
+    });
+    title.setAttribute('aria-label', name);
+    title.replaceChildren(...letters);
+    hero.classList.add('is-opening');
+
+    let timeline;
+    const finish = () => {
+      if (!timeline) return;
+      hero.classList.remove('is-opening');
+      timeline.revert();
+      timeline = null;
+      title.textContent = name;
+      title.removeAttribute('aria-label');
+      document.removeEventListener('focusin', finish);
+      window.removeEventListener('scroll', finishOnScroll);
+      window.removeEventListener('pagehide', finish);
+    };
+    const finishOnScroll = () => {
+      if (window.scrollY > 24) finish();
+    };
+
+    timeline = gsap.timeline({ onComplete: finish });
+    timeline
+      .addLabel('signature', 0)
+      .fromTo(oval, { strokeDasharray: perimeter, strokeDashoffset: perimeter },
+        { strokeDashoffset: 0, duration: 0.55, ease: 'power2.inOut' }, 'signature')
+      .from(intro.querySelector('.intro-monogram-letter'),
+        { yPercent: 110, duration: 0.48, ease: 'power4.out' }, 'signature+=0.07')
+      .from(intro.querySelectorAll('.intro-rule'),
+        { scaleX: 0, duration: 0.5, ease: 'power3.out' }, 'signature+=0.13')
+      .addLabel('opening', 0.46)
+      .to(intro.querySelector('.intro-emblem'),
+        { opacity: 0, y: -14, duration: 0.21, ease: 'power2.in' }, 'opening')
+      .to(intro.querySelector('.intro-shutter--top'),
+        { yPercent: -102, duration: 0.92, ease: 'power4.inOut' }, 'opening')
+      .to(intro.querySelector('.intro-shutter--bottom'),
+        { yPercent: 102, duration: 0.88, ease: 'power4.inOut' }, 'opening+=0.04')
+      .from(image, { scale: 1.16, duration: 1.18, ease: 'power3.out' }, 'opening')
+      .addLabel('wordmark', 0.84)
+      .from(title.querySelectorAll('.char-inner'), {
+        yPercent: 112,
+        rotationX: -52,
+        opacity: 0,
+        stagger: 0.028,
+        duration: 0.58,
+        ease: 'power4.out'
+      }, 'wordmark');
+
+    document.addEventListener('focusin', finish, { once: true });
+    window.addEventListener('scroll', finishOnScroll, { passive: true });
+    window.addEventListener('pagehide', finish, { once: true });
+    return finish;
+  };
+
+  /* ---------- 7. Revelações e movimento pela rolagem nativa ---------- */
+  const scrollMotion = (gsap, desktop) => {
+    const lineOriginals = new Map();
+    const enter = (trigger, start = 'top 91%') => ({ trigger, start, once: true });
+
+    document.querySelectorAll('[data-split-lines]').forEach((heading) => {
+      const original = heading.innerHTML;
+      const label = heading.innerText.replace(/\s+/g, ' ').trim();
+      lineOriginals.set(heading, original);
+      heading.setAttribute('aria-label', label);
+      heading.innerHTML = original.split(/<br\s*\/?>/i)
+        .map((line) => '<span class="line-mask" aria-hidden="true"><span class="line-inner">' + line.trim() + '</span></span>')
         .join('');
+
+      gsap.fromTo(heading.querySelectorAll('.line-inner'), { yPercent: 106, rotationX: -22 }, {
+        yPercent: 0,
+        rotationX: 0,
+        duration: desktop ? 0.76 : 0.61,
+        stagger: 0.095,
+        ease: 'power4.out',
+        clearProps: 'transform',
+        scrollTrigger: enter(heading, 'top 94%')
+      });
     });
+
+    const hero = document.querySelector('.hero-stage');
+    gsap.to(hero.querySelector('.hero-media'), {
+      yPercent: -4,
+      scale: 1.10,
+      ease: 'none',
+      scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: 0.5 }
+    });
+
+    const canvas = document.querySelector('.manifesto-canvas');
+    const collage = gsap.timeline({
+      defaults: { ease: 'none' },
+      scrollTrigger: { trigger: canvas, start: 'top bottom', end: 'bottom top', scrub: 0.55 }
+    });
+
+    canvas.querySelectorAll('.collage-item').forEach((photo) => {
+      const { parallax, parallaxMobile, driftX, rotStart, rotEnd } = photo.dataset;
+      const y = Number(desktop ? parallax : parallaxMobile);
+      const x = Number(driftX) * (desktop ? 1 : 0.38);
+      const angle = desktop ? 1 : 0.52;
+      collage.fromTo(photo, {
+        x: -x * 0.55, y: -y * 0.5, rotation: Number(rotStart) * angle
+      }, {
+        x: x * 0.45, y: y * 0.5, rotation: Number(rotEnd) * angle, duration: 1
+      }, 0);
+    });
+
+    const trio = document.querySelector('.trio-grid');
+    trio.querySelectorAll('.trio-card').forEach((card) => {
+      const y = Number(desktop ? card.dataset.trioY : card.dataset.trioYMobile);
+      gsap.fromTo(card, { y: -y * 0.45 }, {
+        y: y * 0.55,
+        ease: 'none',
+        scrollTrigger: { trigger: trio, start: 'top bottom', end: 'bottom top', scrub: 0.6 }
+      });
+    });
+
+    // The crop and the movement of the photo live on different elements.
+    const fromBottom = 'inset(100% 0 0 0)';
+    const fromLeft = 'inset(0 100% 0 0)';
+    const fromRight = 'inset(0 0 0 100%)';
+    const runs = [
+      ['.collage-inner', [fromBottom, fromLeft, fromRight]],
+      ['.signature-photo', [fromLeft, fromRight]],
+      ['.trio-card img', [fromRight, fromBottom, fromLeft]],
+      ['.experience-photo, .visit-photo', [fromBottom, fromLeft]],
+      ['.moment-photo, .instagram-frame', [fromBottom]]
+    ];
+    runs.forEach(([selector, edges]) => {
+      document.querySelectorAll(selector).forEach((frame, index) => {
+        gsap.fromTo(frame, { clipPath: edges[index % edges.length] }, {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          duration: desktop ? 0.88 : 0.67,
+          ease: 'power3.inOut',
+          clearProps: 'clipPath',
+          scrollTrigger: enter(frame, 'top 98%')
+        });
+      });
+    });
+
+    const passiveGroups = [
+      ['.manifesto-copy', [':scope > .eyebrow', '.manifesto-lead']],
+      ['.trust-item', ['.trust-metric', '.trust-label']],
+      ['.reviews-grid', ['.reviews-score', '.reviews-count', '.reviews-summary']],
+      ['.signature-card', ['.signature-title', '.signature-desc']],
+      ['.moment-card', ['.moment-title', '.moment-desc']]
+    ];
+    passiveGroups.forEach(([parentSelector, selectors]) => {
+      document.querySelectorAll(parentSelector).forEach((group) => {
+        const texts = group.querySelectorAll(selectors.join(', '));
+        if (!texts.length) return;
+        gsap.fromTo(texts, { y: 16, opacity: 0 }, {
+          y: 0,
+          opacity: 1,
+          stagger: 0.06,
+          duration: 0.56,
+          ease: 'power3.out',
+          clearProps: 'transform,opacity',
+          scrollTrigger: enter(texts[0], 'top 96%')
+        });
+      });
+    });
+
+    document.querySelectorAll('.section-break').forEach((divider) => {
+      const borders = divider.querySelectorAll('.section-break-border');
+      gsap.fromTo(borders, { scaleX: 0 }, {
+        scaleX: 1,
+        duration: 0.72,
+        ease: 'power3.inOut',
+        clearProps: 'transform',
+        scrollTrigger: enter(divider)
+      });
+    });
+
+    const categories = document.querySelector('.categories-stage');
+    const activeCover = categories.querySelector('.category-slide.is-active img');
+    gsap.fromTo(activeCover, { scale: 1.12 }, {
+      scale: 1,
+      duration: 1.13,
+      ease: 'power3.out',
+      clearProps: 'transform',
+      scrollTrigger: enter(categories, 'top 98%')
+    });
+
+    const wordmark = document.querySelector('.footer-wordmark');
+    gsap.fromTo(wordmark, { clipPath: fromBottom, yPercent: 19 }, {
+      clipPath: 'inset(0% 0% 0% 0%)',
+      yPercent: 0,
+      duration: 0.95,
+      ease: 'power4.out',
+      clearProps: 'clipPath,transform',
+      scrollTrigger: enter(wordmark, 'top 97%')
+    });
+
+    return () => {
+      lineOriginals.forEach((html, heading) => {
+        heading.innerHTML = html;
+        heading.removeAttribute('aria-label');
+      });
+    };
   };
 
-  const restoreOriginalLines = () => {
-    splitTargets.forEach((el) => {
-      if (el.dataset.originalHtml) {
-        el.innerHTML = el.dataset.originalHtml;
-        el.removeAttribute('aria-label');
-      }
-    });
-  };
-
-  /* ---------- 7. Coreografia GSAP + ScrollTrigger via matchMedia ---------- */
   const initMotion = () => {
-    initPillHover();
-
-    if (typeof window.gsap === 'undefined' || typeof window.ScrollTrigger === 'undefined') {
-      return;
-    }
-
-    const gsap = window.gsap;
-    const ScrollTrigger = window.ScrollTrigger;
-    gsap.registerPlugin(ScrollTrigger);
+    const { gsap, ScrollTrigger } = window;
+    if (!gsap) return;
 
     const mm = gsap.matchMedia();
+    mm.add('(prefers-reduced-motion: no-preference)', () => playOpening(gsap));
 
-    mm.add('(prefers-reduced-motion: reduce)', () => {
-      restoreOriginalLines();
-      return () => {};
+    if (!ScrollTrigger) return;
+    gsap.registerPlugin(ScrollTrigger);
+    mm.add({
+      motion: '(prefers-reduced-motion: no-preference)',
+      desktop: '(min-width: 1024px)'
+    }, ({ conditions }) => {
+      if (conditions.motion) return scrollMotion(gsap, conditions.desktop);
     });
-
-    mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
-      buildLineMasks();
-
-      document.querySelectorAll('[data-split-lines]').forEach((heading) => {
-        const lines = heading.querySelectorAll('.line-inner');
-        if (!lines.length) return;
-        gsap.fromTo(
-          lines,
-          { yPercent: 100 },
-          {
-            yPercent: 0,
-            duration: 0.78,
-            ease: 'power3.out',
-            stagger: 0.06,
-            clearProps: 'transform',
-            scrollTrigger: {
-              trigger: heading,
-              start: 'top 85%',
-              once: true
-            }
-          }
-        );
-      });
-
-      const heroImg = document.querySelector('.hero-media img');
-      const heroContent = document.querySelector('.hero-content');
-      const heroStage = document.querySelector('.hero-stage');
-      if (heroStage && heroImg) {
-        gsap.fromTo(
-          heroImg,
-          { scale: 1.04, yPercent: 0 },
-          {
-            scale: 1,
-            yPercent: -4,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: heroStage,
-              start: 'top top',
-              end: 'bottom top',
-              scrub: 0.55
-            }
-          }
-        );
-      }
-      if (heroStage && heroContent) {
-        gsap.to(heroContent, {
-          y: -36,
-          opacity: 0.15,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: heroStage,
-            start: '35% top',
-            end: 'bottom top',
-            scrub: 0.5
-          }
-        });
-      }
-
-      const manifestoCanvas = document.querySelector('.manifesto-canvas');
-      if (manifestoCanvas) {
-        manifestoCanvas.querySelectorAll('.collage-item').forEach((item) => {
-          const yOffset = Number(item.dataset.parallax || 0);
-          gsap.fromTo(
-            item,
-            { y: yOffset * -0.5 },
-            {
-              y: yOffset * 0.5,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: manifestoCanvas,
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: 0.6
-              }
-            }
-          );
-        });
-      }
-
-      document.querySelectorAll('.section-break').forEach((brk) => {
-        const borders = brk.querySelectorAll('.section-break-border');
-        if (!borders.length) return;
-        gsap.fromTo(
-          borders,
-          { scaleX: 0 },
-          {
-            scaleX: 1,
-            duration: 0.72,
-            ease: 'power2.out',
-            clearProps: 'transform',
-            scrollTrigger: {
-              trigger: brk,
-              start: 'top 88%',
-              once: true
-            }
-          }
-        );
-      });
-
-      const trioGrid = document.querySelector('.trio-grid');
-      if (trioGrid) {
-        trioGrid.querySelectorAll('.trio-card').forEach((card) => {
-          const yOffset = Number(card.dataset.trioY || 0);
-          gsap.fromTo(
-            card,
-            { y: yOffset * -0.45 },
-            {
-              y: yOffset * 0.55,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: trioGrid,
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: 0.7
-              }
-            }
-          );
-        });
-      }
-
-      return () => {
-        restoreOriginalLines();
-      };
-    });
-
-    mm.add('(max-width: 1023px) and (prefers-reduced-motion: no-preference)', () => {
-      buildLineMasks();
-
-      document.querySelectorAll('[data-split-lines]').forEach((heading) => {
-        const lines = heading.querySelectorAll('.line-inner');
-        if (!lines.length) return;
-        gsap.fromTo(
-          lines,
-          { yPercent: 100 },
-          {
-            yPercent: 0,
-            duration: 0.5,
-            ease: 'power3.out',
-            stagger: 0.06,
-            clearProps: 'transform',
-            scrollTrigger: {
-              trigger: heading,
-              start: 'top 88%',
-              once: true
-            }
-          }
-        );
-      });
-
-      const manifestoCanvas = document.querySelector('.manifesto-canvas');
-      if (manifestoCanvas) {
-        manifestoCanvas.querySelectorAll('.collage-item').forEach((item) => {
-          const yOffset = Number(item.dataset.parallaxMobile || 14);
-          gsap.fromTo(
-            item,
-            { y: yOffset * -0.5 },
-            {
-              y: yOffset * 0.5,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: manifestoCanvas,
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: 0.6
-              }
-            }
-          );
-        });
-      }
-
-      document.querySelectorAll('.section-break').forEach((brk) => {
-        const borders = brk.querySelectorAll('.section-break-border');
-        if (!borders.length) return;
-        gsap.fromTo(
-          borders,
-          { scaleX: 0 },
-          {
-            scaleX: 1,
-            duration: 0.56,
-            ease: 'power2.out',
-            clearProps: 'transform',
-            scrollTrigger: {
-              trigger: brk,
-              start: 'top 90%',
-              once: true
-            }
-          }
-        );
-      });
-
-      const trioGrid = document.querySelector('.trio-grid');
-      if (trioGrid) {
-        trioGrid.querySelectorAll('.trio-card').forEach((card) => {
-          const yOffset = Number(card.dataset.trioYMobile || 0);
-          gsap.fromTo(
-            card,
-            { y: yOffset * -0.45 },
-            {
-              y: yOffset * 0.55,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: trioGrid,
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: 0.7
-              }
-            }
-          );
-        });
-      }
-
-      return () => {
-        restoreOriginalLines();
-      };
-    });
-
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(() => ScrollTrigger.refresh());
-    }
+    document.fonts?.ready.then(() => ScrollTrigger.refresh(true));
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMotion);
-  } else {
-    initMotion();
-  }
+  initMotion();
 })();

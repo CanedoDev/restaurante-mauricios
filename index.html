@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mauricio’s de Itaipava · Frutos do mar e tradição na serra</title>
   <meta name="description" content="Restaurante Mauricio’s em Itaipava, Petrópolis. Mais de 60 anos de tradição em frutos do mar, chapas quentes, varanda e lareira no Shopping Altair.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=boska@400,401,500&amp;f[]=switzer@400,500,600&amp;display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="./assets/varanda-hero.jpg">
+  <link rel="stylesheet" href="./css/style.css?v=2.1">
 </head>
 <body>
   <a class="skip-link" href="#conteudo-principal">Ir para o conteúdo principal</a>
@@ -30,7 +31,7 @@
       </nav>
 
       <div class="header-actions">
-        <a class="pill pill--compact header-cta" href="./cardapio.html">
+        <a class="button button--compact header-cta" href="./cardapio.html">
           <span class="btn-text-wrap">
             <span class="btn-text">Ver cardápio</span>
             <span class="btn-text-hover" aria-hidden="true">Ver cardápio</span>
@@ -51,7 +52,7 @@
     </div>
   </header>
 
-  <!-- Menu Mobile Fullscreen -->
+  <!-- Menu de navegação em tela cheia -->
   <div
     class="mobile-menu surface-dark"
     id="mobile-menu"
@@ -74,14 +75,14 @@
     </nav>
 
     <div class="mobile-menu-footer">
-      <a class="pill pill--cream" href="./cardapio.html">
+      <a class="button button--cream" href="./cardapio.html">
         <span class="btn-text-wrap">
           <span class="btn-text">Ver cardápio</span>
           <span class="btn-text-hover" aria-hidden="true">Ver cardápio</span>
         </span>
       </a>
       <a
-        class="pill pill--outline-light"
+        class="button button--outline-light"
         href="https://wa.me/5524993061488?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20reserva%20no%20Restaurante%20Mauricio%E2%80%99s."
         target="_blank"
         rel="noopener noreferrer"
@@ -111,51 +112,66 @@
         </div>
         <div class="hero-scrim" aria-hidden="true"></div>
 
-        <div class="container hero-content">
-          <span class="eyebrow hero-kicker">Restaurante em Itaipava</span>
-          <h1 class="hero-title">Mauricio’s</h1>
-          <p class="hero-subtitle">
-            Frutos do mar, chapas quentes e mais de 60 anos de tradição em Itaipava.
-          </p>
-          <div class="hero-actions">
-            <a class="pill pill--cream" href="./cardapio.html">
-              <span class="btn-text-wrap">
-                <span class="btn-text">Ver cardápio</span>
-                <span class="btn-text-hover" aria-hidden="true">Ver cardápio</span>
-              </span>
-            </a>
-            <a class="pill pill--outline-light" href="#visite-nos">
-              <span class="btn-text-wrap">
-                <span class="btn-text">Como chegar</span>
-                <span class="btn-text-hover" aria-hidden="true">Como chegar</span>
-              </span>
-            </a>
+        <div class="intro-stage" id="intro-stage" aria-hidden="true">
+          <div class="intro-shutter intro-shutter--top"></div>
+          <div class="intro-shutter intro-shutter--bottom"></div>
+          <div class="intro-emblem">
+            <div class="intro-rules">
+              <span class="intro-rule intro-rule--left"></span>
+              <div class="intro-monogram">
+                <svg class="intro-oval-svg" viewBox="0 0 68 92" aria-hidden="true">
+                  <rect class="intro-oval-path" x="2" y="2" width="64" height="88" rx="32" fill="none" stroke="currentColor" stroke-width="1.2" />
+                </svg>
+                <span class="intro-monogram-mask">
+                  <span class="intro-monogram-letter">M</span>
+                </span>
+              </div>
+              <span class="intro-rule intro-rule--right"></span>
+            </div>
           </div>
+        </div>
+
+        <div class="container hero-content">
+          <h1 class="hero-title">Mauricio’s</h1>
         </div>
       </div>
 
       <div class="manifesto-stage" id="a-casa">
         <div class="container manifesto-canvas">
-          <figure class="collage-item collage-item--1" data-parallax="-58" data-parallax-mobile="-14">
-            <img src="./assets/fachada-altair.jpg" alt="Entrada do Restaurante Mauricio’s no Shopping Altair" width="1440" height="1280" loading="lazy" decoding="async">
+          <figure class="collage-item collage-item--1" data-parallax="-62" data-parallax-mobile="-14" data-drift-x="20" data-rot-start="-5.5" data-rot-end="2.8">
+            <div class="collage-inner">
+              <img src="./assets/fachada-altair.jpg" alt="Entrada do Restaurante Mauricio’s no Shopping Altair" width="1440" height="1280" loading="lazy" decoding="async">
+            </div>
           </figure>
-          <figure class="collage-item collage-item--2" data-parallax="36" data-parallax-mobile="12">
-            <img src="./assets/empada-camarao.jpg" alt="Empada de camarão dourada" width="938" height="1250" loading="lazy" decoding="async">
+          <figure class="collage-item collage-item--2" data-parallax="42" data-parallax-mobile="12" data-drift-x="-18" data-rot-start="4.2" data-rot-end="-3.2">
+            <div class="collage-inner">
+              <img src="./assets/empada-camarao.jpg" alt="Empada de camarão dourada" width="938" height="1250" loading="lazy" decoding="async">
+            </div>
           </figure>
-          <figure class="collage-item collage-item--3" data-parallax="-28" data-parallax-mobile="-12">
-            <img src="./assets/caipirinha-tangerina.jpg" alt="Caipirinha de tangerina com pimenta" width="703" height="1250" loading="lazy" decoding="async">
+          <figure class="collage-item collage-item--3" data-parallax="-38" data-parallax-mobile="-12" data-drift-x="22" data-rot-start="-3.8" data-rot-end="4.4">
+            <div class="collage-inner">
+              <img src="./assets/caipirinha-tangerina.jpg" alt="Caipirinha de tangerina com pimenta" width="703" height="1250" loading="lazy" decoding="async">
+            </div>
           </figure>
-          <figure class="collage-item collage-item--4" data-parallax="52" data-parallax-mobile="16">
-            <img src="./assets/arroz-camarao.jpg" alt="Arroz de camarão servido na travessa" width="703" height="1250" loading="lazy" decoding="async">
+          <figure class="collage-item collage-item--4" data-parallax="56" data-parallax-mobile="16" data-drift-x="-20" data-rot-start="5.2" data-rot-end="-2.8">
+            <div class="collage-inner">
+              <img src="./assets/arroz-camarao.jpg" alt="Arroz de camarão servido na travessa" width="703" height="1250" loading="lazy" decoding="async">
+            </div>
           </figure>
-          <figure class="collage-item collage-item--5" data-parallax="-42" data-parallax-mobile="-15">
-            <img src="./assets/picanha-pedra.jpg" alt="Picanha servida quente na pedra" width="1200" height="1600" loading="lazy" decoding="async">
+          <figure class="collage-item collage-item--5" data-parallax="-48" data-parallax-mobile="-15" data-drift-x="24" data-rot-start="3.6" data-rot-end="-4.2">
+            <div class="collage-inner">
+              <img src="./assets/picanha-pedra.jpg" alt="Picanha servida quente na pedra" width="1200" height="1600" loading="lazy" decoding="async">
+            </div>
           </figure>
-          <figure class="collage-item collage-item--6" data-parallax="25" data-parallax-mobile="12">
-            <img src="./assets/brinde-vinhos.jpg" alt="Taças em mesa preparada para o jantar" width="1200" height="1600" loading="lazy" decoding="async">
+          <figure class="collage-item collage-item--6" data-parallax="34" data-parallax-mobile="12" data-drift-x="-16" data-rot-start="-4.6" data-rot-end="3.6">
+            <div class="collage-inner">
+              <img src="./assets/brinde-vinhos.jpg" alt="Taças em mesa preparada para o jantar" width="1200" height="1600" loading="lazy" decoding="async">
+            </div>
           </figure>
-          <figure class="collage-item collage-item--7" data-parallax="-34" data-parallax-mobile="-14">
-            <img src="./assets/panela-camarao.jpg" alt="Panela com preparo de camarão servido quente" width="1200" height="1600" loading="lazy" decoding="async">
+          <figure class="collage-item collage-item--7" data-parallax="-50" data-parallax-mobile="-14" data-drift-x="-22" data-rot-start="4.5" data-rot-end="-3.8">
+            <div class="collage-inner">
+              <img src="./assets/panela-camarao.jpg" alt="Panela com preparo de camarão servido quente" width="1200" height="1600" loading="lazy" decoding="async">
+            </div>
           </figure>
 
           <div class="manifesto-copy">
@@ -165,7 +181,7 @@
               <em>uma mesa de mar.</em>
             </h2>
             <p class="manifesto-lead">
-              Da varanda ao salão, o bobó vem na panela e a carne chega na pedra.
+              Em Itaipava, há mais de 60 anos servindo bobó na panela e carne na pedra.
             </p>
           </div>
         </div>
@@ -191,7 +207,7 @@
         </div>
 
         <div class="trust-cta">
-          <a class="pill pill--dark" href="./cardapio.html">
+          <a class="button button--dark" href="./cardapio.html">
             <span class="btn-text-wrap">
               <span class="btn-text">Ver cardápio</span>
               <span class="btn-text-hover" aria-hidden="true">Ver cardápio</span>
@@ -222,7 +238,7 @@
             <h2 class="category-title">Frutos do Mar</h2>
             <p class="category-desc">Do bobó à moqueca, o camarão chega à mesa na panela.</p>
             <div class="category-cta-wrap">
-              <a class="pill pill--cream" href="./cardapio.html#frutos-do-mar">
+              <a class="button button--cream" href="./cardapio.html#frutos-do-mar">
                 <span class="btn-text-wrap">
                   <span class="btn-text">Ver frutos do mar</span>
                   <span class="btn-text-hover" aria-hidden="true">Ver frutos do mar</span>
@@ -245,7 +261,7 @@
             <h2 class="category-title">Chapas &amp; Carnes</h2>
             <p class="category-desc">Picanha na pedra e filés para o almoço na serra.</p>
             <div class="category-cta-wrap">
-              <a class="pill pill--cream" href="./cardapio.html#chapas-e-carnes">
+              <a class="button button--cream" href="./cardapio.html#chapas-e-carnes">
                 <span class="btn-text-wrap">
                   <span class="btn-text">Ver chapas e carnes</span>
                   <span class="btn-text-hover" aria-hidden="true">Ver chapas e carnes</span>
@@ -268,7 +284,7 @@
             <h2 class="category-title">Entradas &amp; Bar</h2>
             <p class="category-desc">Empadas, petiscos e uma caipirinha para começar.</p>
             <div class="category-cta-wrap">
-              <a class="pill pill--cream" href="./cardapio.html#entradas-e-petiscos">
+              <a class="button button--cream" href="./cardapio.html#entradas-e-petiscos">
                 <span class="btn-text-wrap">
                   <span class="btn-text">Ver entradas e bar</span>
                   <span class="btn-text-hover" aria-hidden="true">Ver entradas e bar</span>
@@ -291,7 +307,7 @@
             <h2 class="category-title">Sobremesas</h2>
             <p class="category-desc">Flan e banana flambada para fechar o almoço.</p>
             <div class="category-cta-wrap">
-              <a class="pill pill--cream" href="./cardapio.html#sobremesas">
+              <a class="button button--cream" href="./cardapio.html#sobremesas">
                 <span class="btn-text-wrap">
                   <span class="btn-text">Ver sobremesas</span>
                   <span class="btn-text-hover" aria-hidden="true">Ver sobremesas</span>
@@ -341,7 +357,7 @@
               Chiclete, moqueca e bobó são os destaques de camarão da casa.
             </p>
             <div class="signature-cta">
-              <a class="pill pill--outline-dark" href="./cardapio.html#frutos-do-mar">
+              <a class="button button--outline-dark" href="./cardapio.html#frutos-do-mar">
                 <span class="btn-text-wrap">
                   <span class="btn-text">Ver frutos do mar</span>
                   <span class="btn-text-hover" aria-hidden="true">Ver frutos do mar</span>
@@ -359,7 +375,7 @@
               Picanha na pedra, filé à piamontese e opções para o almoço.
             </p>
             <div class="signature-cta">
-              <a class="pill pill--outline-dark" href="./cardapio.html#chapas-e-carnes">
+              <a class="button button--outline-dark" href="./cardapio.html#chapas-e-carnes">
                 <span class="btn-text-wrap">
                   <span class="btn-text">Ver chapas e carnes</span>
                   <span class="btn-text-hover" aria-hidden="true">Ver chapas e carnes</span>
@@ -410,7 +426,7 @@
           </p>
           <div class="reviews-cta">
             <a
-              class="pill pill--dark"
+              class="button button--dark"
               href="https://www.google.com/maps/search/?api=1&amp;query=Restaurante+Mauricio%27s+Itaipava&amp;query_place_id=ChIJVUDop_5UmAARL4ryjMd0rLM"
               target="_blank"
               rel="noopener noreferrer"
@@ -448,7 +464,7 @@
           </div>
           <div class="experience-cta">
             <a
-              class="pill pill--cream"
+              class="button button--cream"
               href="https://wa.me/5524993061488?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20reserva%20de%20mesa%20no%20Restaurante%20Mauricio%E2%80%99s."
               target="_blank"
               rel="noopener noreferrer"
@@ -498,7 +514,7 @@
 
           <div class="visit-actions">
             <a
-              class="pill pill--dark"
+              class="button button--dark"
               href="https://www.google.com/maps/search/?api=1&amp;query=Restaurante+Mauricio%27s+Itaipava&amp;query_place_id=ChIJVUDop_5UmAARL4ryjMd0rLM"
               target="_blank"
               rel="noopener noreferrer"
@@ -509,7 +525,7 @@
               </span>
             </a>
             <a
-              class="pill pill--outline-dark"
+              class="button button--outline-dark"
               href="https://wa.me/5524993061488"
               target="_blank"
               rel="noopener noreferrer"
@@ -547,7 +563,7 @@
             <h3 class="moment-title">Almoço executivo</h3>
             <p class="moment-desc">De segunda a quarta, consulte o prato executivo do dia.</p>
             <div class="moment-cta">
-              <a class="pill pill--outline-dark" href="./cardapio.html#executivo">
+              <a class="button button--outline-dark" href="./cardapio.html#executivo">
                 <span class="btn-text-wrap">
                   <span class="btn-text">Ver executivo</span>
                   <span class="btn-text-hover" aria-hidden="true">Ver executivo</span>
@@ -563,7 +579,7 @@
             <h3 class="moment-title">Lareira e vinhos</h3>
             <p class="moment-desc">Nas noites de quinta e sexta, a lareira faz companhia à mesa.</p>
             <div class="moment-cta">
-              <a class="pill pill--outline-dark" href="#visite-nos">
+              <a class="button button--outline-dark" href="#visite-nos">
                 <span class="btn-text-wrap">
                   <span class="btn-text">Consultar horários</span>
                   <span class="btn-text-hover" aria-hidden="true">Consultar horários</span>
@@ -580,7 +596,7 @@
             <p class="moment-desc">Reserve com a casa para reunir o grupo no Shopping Altair.</p>
             <div class="moment-cta">
               <a
-                class="pill pill--outline-dark"
+                class="button button--outline-dark"
                 href="https://wa.me/5524993061488?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20reserva%20para%20grupo%20no%20Restaurante%20Mauricio%E2%80%99s."
                 target="_blank"
                 rel="noopener noreferrer"
@@ -606,7 +622,7 @@
           </h2>
           <p class="faq-help">Prefere conversar com a casa?</p>
           <div class="faq-cta">
-            <a class="pill pill--dark" href="https://wa.me/5524993061488" target="_blank" rel="noopener noreferrer">
+            <a class="button button--dark" href="https://wa.me/5524993061488" target="_blank" rel="noopener noreferrer">
               <span class="btn-text-wrap">
                 <span class="btn-text">Chamar no WhatsApp</span>
                 <span class="btn-text-hover" aria-hidden="true">Chamar no WhatsApp</span>
@@ -695,10 +711,10 @@
         <div class="instagram-header">
           <div>
             <span class="eyebrow">Instagram</span>
-            <h2 class="display-heading instagram-handle" id="heading-instagram">@restaurante.mauricios</h2>
+            <h2 class="display-heading instagram-handle" id="heading-instagram" data-split-lines>@restaurante.mauricios</h2>
           </div>
           <a
-            class="pill pill--dark"
+            class="button button--dark"
             href="https://www.instagram.com/restaurante.mauricios/"
             target="_blank"
             rel="noopener noreferrer"
@@ -768,7 +784,7 @@
         </div>
 
         <div class="footer-col footer-cta-col">
-          <a class="pill pill--cream" href="./cardapio.html">
+          <a class="button button--cream" href="./cardapio.html">
             <span class="btn-text-wrap">
               <span class="btn-text">Ver cardápio</span>
               <span class="btn-text-hover" aria-hidden="true">Ver cardápio</span>
@@ -789,8 +805,9 @@
     </div>
   </footer>
 
+
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
-  <script src="./js/main.js" defer></script>
+  <script src="./js/main.js?v=2.1" defer></script>
 </body>
 </html>
