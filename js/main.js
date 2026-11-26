@@ -356,11 +356,14 @@
     hero.classList.add('is-opening');
 
     let timeline;
+    let openingTimeout;
     const finish = () => {
       if (!timeline) return;
-      hero.classList.remove('is-opening');
-      timeline.revert();
+      const completed = timeline;
       timeline = null;
+      window.clearTimeout(openingTimeout);
+      hero.classList.remove('is-opening');
+      completed.revert();
       title.textContent = name;
       title.removeAttribute('aria-label');
       document.removeEventListener('focusin', finish);
@@ -398,6 +401,8 @@
         ease: 'power4.out'
       }, 'wordmark');
 
+    // Release the first frame even if the browser throttles animation frames.
+    openingTimeout = window.setTimeout(finish, 2250);
     document.addEventListener('focusin', finish, { once: true });
     window.addEventListener('scroll', finishOnScroll, { passive: true });
     window.addEventListener('pagehide', finish, { once: true });
